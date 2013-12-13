@@ -1,8 +1,11 @@
 Vogue::Application.routes.draw do
+
+  root to: 'news#index'
+
   devise_for :users
 
   resources :users, :except => [:new, :create]
-
+  resources :news
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
