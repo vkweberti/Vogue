@@ -1,4 +1,4 @@
-= simple_form_for @news do |f|
+= simple_nested_form_for @news do |f|
   - if @news.errors.any?
     #error_explanation
       h2 = "#{pluralize(@news.errors.count, "error")} prohibited this news from being saved:"
@@ -9,5 +9,14 @@
   = f.input :title
   = f.input :short_text
   = f.input :full_text
+
+
+  #images
+    = f.simple_fields_for :images do |i|
+      - if i.object.id
+        = image_tag i.object.file.url(:thumb)
+      = i.file_field :file
+      = i.link_to_remove 'Remove'
+    = f.link_to_add 'Add image', :images
 
   .actions = f.submit 'Save'
