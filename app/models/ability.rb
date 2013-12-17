@@ -10,6 +10,7 @@ class Ability
        else
          can :index, User
          can [:show, :index], News
+         can [:show, :index], Article
        end
     #
     # The first argument to `can` is the action you are giving the user 
